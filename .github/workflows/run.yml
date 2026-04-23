@@ -14,6 +14,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Random delay (1-600 seconds)
+        run: |
+          DELAY=$((RANDOM % 600 + 1))
+          echo "Waiting ${DELAY} seconds..."
+          sleep $DELAY
       - run: npm ci
       - run: npm run main
         env:
